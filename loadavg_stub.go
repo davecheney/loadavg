@@ -7,6 +7,6 @@ import (
 	"runtime"
 )
 
-func LoadAvg() ([3]float64, error) {
+func loadAvg() ([3]float64, error) {
 	return [...]float64{-1, -1, -1}, fmt.Errorf("loadavg: unsupported platform %q", runtime.GOOS)
 }
