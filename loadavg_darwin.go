@@ -13,7 +13,7 @@ type loadavg struct {
 	scale uint64
 }
 
-func LoadAvg() ([3]float64, error) {
+func loadAvg() ([3]float64, error) {
 	v, err := syscall.Sysctl(sysctl)
 	if err != nil {
 		return [...]float64{-1, -1, -1}, fmt.Errorf("loadavg: sysctl failed: %v", err)

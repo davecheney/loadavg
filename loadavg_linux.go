@@ -7,7 +7,7 @@ import (
 
 const procfile = "/proc/loadavg"
 
-func LoadAvg() ([3]float64, error) {
+func loadAvg() ([3]float64, error) {
 	f, err := os.Open(procfile)
 	if err != nil {
 		return [...]float64{-1, -1, -1}, fmt.Errorf("loadavg: unable to open procfile %q: %v", procfile, err)

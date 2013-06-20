@@ -1,8 +1,10 @@
-// +build linux darwin
-
 package loadavg
 
-import "testing"
+import (
+	"fmt"
+	"log"
+	"testing"
+)
 
 func TestLoadAvg(t *testing.T) {
 	loadavg, err := LoadAvg()
@@ -14,5 +16,13 @@ func TestLoadAvg(t *testing.T) {
 			t.Errorf("expected loadavg >= 0, got %v", l)
 		}
 	}
-	t.Logf("loadavg: %f, %f, %f", loadavg[0], loadavg[1], loadavg[2])
+	t.Logf("loadavg: %2.2f, %2.2f, %2.2f", loadavg[ONE_MIN], loadavg[FIVE_MIN], loadavg[FIFTEEN_MIN])
+}
+
+func ExampleLoadAvg() {
+	loadavg, err := LoadAvg()
+	if err != nil {
+		log.Fatal(err)
+	}
+	fmt.Printf("loadavg: %2.2f, %2.2f, %2.2f", loadavg[ONE_MIN], loadavg[FIVE_MIN], loadavg[FIFTEEN_MIN])
 }
